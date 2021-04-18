@@ -1,0 +1,28 @@
+{
+  "name": "tuya-switch-api",
+  "version": "1.0.0",
+  "description": "A tuya api using your account (for geek things) to control your switch",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cedced19/tuya-switch-api.git"
+  },
+  "keywords": [
+    "tuya",
+    "switch",
+    "control",
+    "account"
+  ],
+  "author": "Cédric JUNG <cedced19@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cedced19/tuya-switch-api/issues"
+  },
+  "homepage": "https://github.com/cedced19/tuya-switch-api#readme",
+  "dependencies": {
+    "got": "^11.8.2"
+  }
+}

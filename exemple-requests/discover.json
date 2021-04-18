@@ -1,0 +1,96 @@
+{
+    "payload": {
+        "devices": [{
+                "data": {
+                    "support_stop": true,
+                    "online": true,
+                    "state": 3
+                },
+                "name": "Volet Cuisine ",
+                "icon": "https://images.tuyaeu.com/smart/program_category_icon/clkg.png",
+                "id": "",
+                "dev_type": "cover",
+                "ha_type": "cover"
+            },
+            {
+                "data": {
+                    "support_stop": true,
+                    "online": true,
+                    "state": 3
+                },
+                "name": "Volet Salon 2",
+                "icon": "https://images.tuyaeu.com/smart/program_category_icon/clkg.png",
+                "id": "",
+                "dev_type": "cover",
+                "ha_type": "cover"
+            },
+            {
+                "data": {
+                    "support_stop": true,
+                    "online": true,
+                    "state": 3
+                },
+                "name": "Rideau Mamie",
+                "icon": "https://images.tuyaeu.com/smart/program_category_icon/clkg.png",
+                "id": "",
+                "dev_type": "cover",
+                "ha_type": "cover"
+            },
+            {
+                "data": {
+                    "support_stop": true,
+                    "online": true,
+                    "state": 3
+                },
+                "name": "Volet Salon 1",
+                "icon": "https://images.tuyaeu.com/smart/program_category_icon/clkg.png",
+                "id": "",
+                "dev_type": "cover",
+                "ha_type": "cover"
+            },
+            {
+                "data": {
+                    "support_stop": true,
+                    "online": true,
+                    "state": 3
+                },
+                "name": "Volet Salon 3",
+                "icon": "https://images.tuyaeu.com/smart/program_category_icon/clkg.png",
+                "id": "",
+                "dev_type": "cover",
+                "ha_type": "cover"
+            },
+            {
+                "data": {
+                    "support_stop": true,
+                    "online": true,
+                    "state": 3
+                },
+                "name": "Volet Salle à manger ",
+                "icon": "https://images.tuyaeu.com/smart/program_category_icon/clkg.png",
+                "id": "",
+                "dev_type": "cover",
+                "ha_type": "cover"
+            },
+            {
+                "data": {},
+                "name": "Fermer le salon",
+                "id": "",
+                "dev_type": "scene",
+                "ha_type": "scene"
+            },
+            {
+                "data": {},
+                "name": "Ouvrir tout le salon",
+                "id": "",
+                "dev_type": "scene",
+                "ha_type": "scene"
+            }
+        ],
+        "scenes": []
+    },
+    "header": {
+        "code": "SUCCESS",
+        "payloadVersion": 1
+    }
+}
