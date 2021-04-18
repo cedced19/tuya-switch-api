@@ -30,13 +30,16 @@ Tuya.prototype.auth = async function(cb) {
     }
     this.refreshToken = body.refresh_token;
     this.accessToken = body.access_token;
-    date = new Date();
+    var date = new Date();
     date.setTime(new Date().getTime() + 8640000);
     this.expireDate = date;
     cb(null);
 }
-
-Tuya.prototype.refresh = async(cb) => {
+Tuya.prototype.isConnected = function() {
+    var date = new Date();
+    return this.expireDate > date;
+}
+Tuya.prototype.refresh = async function(cb) {
     if (typeof cb == 'undefined') {
         cb = function() {};
     }
@@ -56,7 +59,20 @@ Tuya.prototype.refresh = async(cb) => {
     this.expireDate = date;
     cb(null);
 }
-
+Tuya.prototype.connect = function(cb) {
+    if (typeof cb == 'undefined') {
+        cb = function() {};
+    }
+    if (this.isConnected()) {
+        cb(null);
+    } else {
+        if (this.refreshToken == '') {
+            this.auth(cb);
+        } else {
+            this.refresh(cb)
+        }
+    }
+}
 Tuya.prototype.discover = async function(cb) {
     if (typeof cb == 'undefined') {
         cb = function() {};
@@ -71,10 +87,9 @@ Tuya.prototype.discover = async function(cb) {
     try {
         body = JSON.parse(body);
     } catch (error) {
-        cb(err)
+        return cb(error)
     }
-
-    cb(null, body);
+    cb(null, body.devices);
 }
 
 module.exports = Tuya;
