@@ -87,9 +87,62 @@ Tuya.prototype.discover = async function(cb) {
     try {
         body = JSON.parse(body);
     } catch (error) {
-        return cb(error)
+        return cb(error);
     }
     cb(null, body.devices);
 }
-
+Tuya.prototype.open = async function(id, cb) {
+    this.connect();
+    if (typeof cb == 'undefined') {
+        cb = function() {};
+    }
+    var { body } = await got.post(this.url + 'skill', {
+        json: {
+            header: { name: 'turnOnOff', namespace: 'control', payloadVersion: 1 },
+            payload: { accessToken: this.accessToken, devId: id, value: 1 }
+        }
+    });
+    try {
+        body = JSON.parse(body);
+    } catch (error) {
+        return cb(error);
+    }
+    cb(null, body);
+}
+Tuya.prototype.close = async function(id, cb) {
+    this.connect();
+    if (typeof cb == 'undefined') {
+        cb = function() {};
+    }
+    var { body } = await got.post(this.url + 'skill', {
+        json: {
+            header: { name: 'turnOnOff', namespace: 'control', payloadVersion: 1 },
+            payload: { accessToken: this.accessToken, devId: id, value: 0 }
+        }
+    });
+    try {
+        body = JSON.parse(body);
+    } catch (error) {
+        return cb(error);
+    }
+    cb(null, body);
+}
+Tuya.prototype.stop = async function(id, cb) {
+    this.connect();
+    if (typeof cb == 'undefined') {
+        cb = function() {};
+    }
+    var { body } = await got.post(this.url + 'skill', {
+        json: {
+            header: { name: 'startStop', namespace: 'control', payloadVersion: 1 },
+            payload: { accessToken: this.accessToken, devId: id, value: 0 }
+        }
+    });
+    try {
+        body = JSON.parse(body);
+    } catch (error) {
+        return cb(error);
+    }
+    cb(null, body);
+}
 module.exports = Tuya;

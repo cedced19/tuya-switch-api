@@ -32,3 +32,21 @@ Return a boolean, true if there is no need to refresh authentication
 Auth to Tuya API (or check if authenticated) with `tuya.auth` or `tuya.refresh`
 
 cb(err) (*optional*): callback 
+
+## tuya.open(id,cb)
+
+Open the shutter
+
+cb(err) (*optional*): callback 
+
+## tuya.close(id,cb)
+
+Close the shutter
+
+cb(err) (*optional*): callback 
+
+## tuya.stop(id,cb)
+
+Stop the shutter
+
+cb(err) (*optional*): callback 
