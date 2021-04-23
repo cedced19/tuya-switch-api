@@ -74,6 +74,7 @@ Tuya.prototype.connect = function(cb) {
     }
 }
 Tuya.prototype.discover = async function(cb) {
+    this.connect();
     if (typeof cb == 'undefined') {
         cb = function() {};
     }
@@ -89,7 +90,7 @@ Tuya.prototype.discover = async function(cb) {
     } catch (error) {
         return cb(error);
     }
-    cb(null, body.devices);
+    cb(null, body.payload.devices);
 }
 Tuya.prototype.open = async function(id, cb) {
     this.connect();
