@@ -5,7 +5,7 @@ A module to control my Tuya switch.
 
 This function will enter all data you need to auth.
 
-## tuya.auth(cb)
+## tuya.auth(cb)
 
 Auth to Tuya API
 
