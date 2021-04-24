@@ -74,76 +74,80 @@ Tuya.prototype.connect = function(cb) {
     }
 }
 Tuya.prototype.discover = async function(cb) {
-    this.connect();
-    if (typeof cb == 'undefined') {
-        cb = function() {};
-    }
-
-    var { body } = await got.post(this.url + 'skill', {
-        json: {
-            header: { name: 'Discovery', namespace: 'discovery', payloadVersion: 1 },
-            payload: { accessToken: this.accessToken }
+    this.connect(async () => {
+        if (typeof cb == 'undefined') {
+            cb = function() {};
         }
-    });
-    try {
-        body = JSON.parse(body);
-    } catch (error) {
-        return cb(error);
-    }
-    cb(null, body.payload.devices);
+
+        var { body } = await got.post(this.url + 'skill', {
+            json: {
+                header: { name: 'Discovery', namespace: 'discovery', payloadVersion: 1 },
+                payload: { accessToken: this.accessToken }
+            }
+        });
+        try {
+            body = JSON.parse(body);
+        } catch (error) {
+            return cb(error);
+        }
+        cb(null, body.payload.devices);
+    }); 
 }
 Tuya.prototype.open = async function(id, cb) {
-    this.connect();
-    if (typeof cb == 'undefined') {
-        cb = function() {};
-    }
-    var { body } = await got.post(this.url + 'skill', {
-        json: {
-            header: { name: 'turnOnOff', namespace: 'control', payloadVersion: 1 },
-            payload: { accessToken: this.accessToken, devId: id, value: 1 }
+    this.connect(async () => {
+        if (typeof cb == 'undefined') {
+            cb = function() {};
         }
-    });
-    try {
-        body = JSON.parse(body);
-    } catch (error) {
-        return cb(error);
-    }
-    cb(null, body);
+        var { body } = await got.post(this.url + 'skill', {
+            json: {
+                header: { name: 'turnOnOff', namespace: 'control', payloadVersion: 1 },
+                payload: { accessToken: this.accessToken, devId: id, value: 1 }
+            }
+        });
+        try {
+            body = JSON.parse(body);
+        } catch (error) {
+            return cb(error);
+        }
+        cb(null, body);
+    });  
 }
 Tuya.prototype.close = async function(id, cb) {
-    this.connect();
-    if (typeof cb == 'undefined') {
-        cb = function() {};
-    }
-    var { body } = await got.post(this.url + 'skill', {
-        json: {
-            header: { name: 'turnOnOff', namespace: 'control', payloadVersion: 1 },
-            payload: { accessToken: this.accessToken, devId: id, value: 0 }
+    this.connect(async () => {
+        if (typeof cb == 'undefined') {
+            cb = function() {};
         }
+        var { body } = await got.post(this.url + 'skill', {
+            json: {
+                header: { name: 'turnOnOff', namespace: 'control', payloadVersion: 1 },
+                payload: { accessToken: this.accessToken, devId: id, value: 0 }
+            }
+        });
+        try {
+            body = JSON.parse(body);
+        } catch (error) {
+            return cb(error);
+        }
+        cb(null, body);
     });
-    try {
-        body = JSON.parse(body);
-    } catch (error) {
-        return cb(error);
-    }
-    cb(null, body);
 }
 Tuya.prototype.stop = async function(id, cb) {
-    this.connect();
-    if (typeof cb == 'undefined') {
-        cb = function() {};
-    }
-    var { body } = await got.post(this.url + 'skill', {
-        json: {
-            header: { name: 'startStop', namespace: 'control', payloadVersion: 1 },
-            payload: { accessToken: this.accessToken, devId: id, value: 0 }
+    this.connect(async () => {
+        if (typeof cb == 'undefined') {
+            cb = function() {};
         }
+        var { body } = await got.post(this.url + 'skill', {
+            json: {
+                header: { name: 'startStop', namespace: 'control', payloadVersion: 1 },
+                payload: { accessToken: this.accessToken, devId: id, value: 0 }
+            }
+        });
+        try {
+            body = JSON.parse(body);
+        } catch (error) {
+            return cb(error);
+        }
+        cb(null, body);
     });
-    try {
-        body = JSON.parse(body);
-    } catch (error) {
-        return cb(error);
-    }
-    cb(null, body);
 }
 module.exports = Tuya;
